@@ -113,6 +113,22 @@ class UI {
             ctx.strokeText("SLASH TO CHOOSE", canvasWidth / 2, canvasHeight - 60 * s);
             ctx.fillText("SLASH TO CHOOSE", canvasWidth / 2, canvasHeight - 60 * s);
 
+            // Tombol BACK (Pojok Kiri Bawah)
+            ctx.shadowColor = "#F5D108";
+            ctx.shadowBlur = Math.round(12 * s);
+            ctx.strokeStyle = "#F5D108";
+            ctx.lineWidth = Math.max(2, Math.round(3 * s));
+            ctx.strokeRect(20 * s, canvasHeight - 75 * s, 130 * s, 48 * s); // Bounding Box BACK
+
+            ctx.font = `${Math.round(20 * s)}px 'Ninja', cursive`;
+            ctx.fillStyle = "#F5D108";
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = Math.max(1, Math.round(2 * s));
+            ctx.textAlign = "center";
+            ctx.strokeText("↩ BACK", 85 * s, canvasHeight - 43 * s);
+            ctx.fillText("↩ BACK", 85 * s, canvasHeight - 43 * s);
+            ctx.shadowBlur = 0;
+
         } else if (this.state === "DIFFICULTY_SELECT") {
             ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
             ctx.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -177,6 +193,22 @@ class UI {
             ctx.lineWidth = Math.max(1, Math.round(2 * s));
             ctx.strokeText("SLASH TO CHOOSE", canvasWidth / 2, canvasHeight - 60 * s);
             ctx.fillText("SLASH TO CHOOSE", canvasWidth / 2, canvasHeight - 60 * s);
+
+            // Tombol BACK (Pojok Kiri Bawah)
+            ctx.shadowColor = "#F5D108";
+            ctx.shadowBlur = Math.round(12 * s);
+            ctx.strokeStyle = "#F5D108";
+            ctx.lineWidth = Math.max(2, Math.round(3 * s));
+            ctx.strokeRect(20 * s, canvasHeight - 75 * s, 130 * s, 48 * s); // Bounding Box BACK
+
+            ctx.font = `${Math.round(20 * s)}px 'Ninja', cursive`;
+            ctx.fillStyle = "#F5D108";
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = Math.max(1, Math.round(2 * s));
+            ctx.textAlign = "center";
+            ctx.strokeText("↩ BACK", 85 * s, canvasHeight - 43 * s);
+            ctx.fillText("↩ BACK", 85 * s, canvasHeight - 43 * s);
+            ctx.shadowBlur = 0;
 
         } else if (this.state === "GAME_1P") {
             // HUD Kiri Atas: Skor & Rekor Terbaik (BEST)

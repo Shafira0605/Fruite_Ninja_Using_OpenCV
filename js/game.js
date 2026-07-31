@@ -73,9 +73,20 @@ function checkMenuInteraction(blade, stateToTrigger) {
             }
         }
         else if (ui.state === "MODE_SELECT") {
+            const s = ui.getScale(canvas.width, canvas.height);
+
+            // Cek Hitbox Tombol BACK (x: 20*s to 150*s, y: canvas.height - 75*s to -27*s)
+            if (head.x > 20 * s && head.x < 150 * s &&
+                head.y > canvas.height - 75 * s && head.y < canvas.height - 27 * s) {
+                ui.state = "WELCOME";
+                playSound('splat');
+                blade.history = [];
+                return true;
+            }
+
             // Cek Hitbox 1 PLAYER (canvasWidth / 4 - 110 to +110, y: -40 to +20)
-            if (head.x > canvas.width / 4 - 110 && head.x < canvas.width / 4 + 110 &&
-                head.y > canvas.height / 2 - 40 && head.y < canvas.height / 2 + 20) {
+            if (head.x > canvas.width / 4 - 110 * s && head.x < canvas.width / 4 + 110 * s &&
+                head.y > canvas.height / 2 - 40 * s && head.y < canvas.height / 2 + 20 * s) {
                 ui.mode = "1P";
                 ui.state = "DIFFICULTY_SELECT";
                 playSound('splat');
@@ -83,8 +94,8 @@ function checkMenuInteraction(blade, stateToTrigger) {
                 return true;
             }
             // Cek Hitbox 2 PLAYERS ((canvasWidth / 4) * 3 - 120 to +120, y: -40 to +20)
-            else if (head.x > (canvas.width / 4) * 3 - 120 && head.x < (canvas.width / 4) * 3 + 120 &&
-                head.y > canvas.height / 2 - 40 && head.y < canvas.height / 2 + 20) {
+            else if (head.x > (canvas.width / 4) * 3 - 120 * s && head.x < (canvas.width / 4) * 3 + 120 * s &&
+                head.y > canvas.height / 2 - 40 * s && head.y < canvas.height / 2 + 20 * s) {
                 ui.mode = "2P";
                 ui.state = "DIFFICULTY_SELECT";
                 playSound('splat');
@@ -93,21 +104,32 @@ function checkMenuInteraction(blade, stateToTrigger) {
             }
         }
         else if (ui.state === "DIFFICULTY_SELECT") {
+            const s = ui.getScale(canvas.width, canvas.height);
+
+            // Cek Hitbox Tombol BACK (x: 20*s to 150*s, y: canvas.height - 75*s to -27*s)
+            if (head.x > 20 * s && head.x < 150 * s &&
+                head.y > canvas.height - 75 * s && head.y < canvas.height - 27 * s) {
+                ui.state = "MODE_SELECT";
+                playSound('splat');
+                blade.history = [];
+                return true;
+            }
+
             let selectedDiff = null;
 
             // EASY (canvasWidth / 4 - 80 to +80, y: -40 to +20)
-            if (head.x > canvas.width / 4 - 80 && head.x < canvas.width / 4 + 80 &&
-                head.y > canvas.height / 2 - 40 && head.y < canvas.height / 2 + 20) {
+            if (head.x > canvas.width / 4 - 80 * s && head.x < canvas.width / 4 + 80 * s &&
+                head.y > canvas.height / 2 - 40 * s && head.y < canvas.height / 2 + 20 * s) {
                 selectedDiff = "Easy";
             }
             // MEDIUM (canvasWidth / 2 - 90 to +90, y: -40 to +20)
-            else if (head.x > canvas.width / 2 - 90 && head.x < canvas.width / 2 + 90 &&
-                head.y > canvas.height / 2 - 40 && head.y < canvas.height / 2 + 20) {
+            else if (head.x > canvas.width / 2 - 90 * s && head.x < canvas.width / 2 + 90 * s &&
+                head.y > canvas.height / 2 - 40 * s && head.y < canvas.height / 2 + 20 * s) {
                 selectedDiff = "Medium";
             }
             // HARD ((canvasWidth / 4) * 3 - 80 to +80, y: -40 to +20)
-            else if (head.x > (canvas.width / 4) * 3 - 80 && head.x < (canvas.width / 4) * 3 + 80 &&
-                head.y > canvas.height / 2 - 40 && head.y < canvas.height / 2 + 20) {
+            else if (head.x > (canvas.width / 4) * 3 - 80 * s && head.x < (canvas.width / 4) * 3 + 80 * s &&
+                head.y > canvas.height / 2 - 40 * s && head.y < canvas.height / 2 + 20 * s) {
                 selectedDiff = "Hard";
             }
 
