@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Ninja';
+    src: url('assets/fonts/ninja.ttf') format('truetype');
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    overflow: hidden; /* Mencegah scrollbar muncul */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background: radial-gradient(circle, rgba(20, 20, 30, 0.95) 0%, rgba(5, 5, 10, 0.98) 100%);
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+#loading.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.loading-title {
+    font-family: 'Ninja', cursive, sans-serif;
+    font-size: 60px;
+    color: #F5D108;
+    margin: 0;
+    text-shadow: 0 0 20px #F5D108, 0 0 40px #F5D108;
+    letter-spacing: 2px;
+}
+
+.progress-container {
+    width: 280px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(245, 209, 8, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(245, 209, 8, 0.3);
+    margin: 15px 0;
+    position: relative;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #F5D108, cyan);
+    border-radius: 8px;
+    box-shadow: 0 0 10px cyan;
+    animation: fillProgress 1.8s ease-in-out infinite;
+    transform-origin: left center;
+    will-change: transform;
+}
+
+@keyframes fillProgress {
+    0% { transform: scaleX(0.05); }
+    50% { transform: scaleX(0.7); }
+    100% { transform: scaleX(1); }
+}
+
+.loading-status {
+    font-family: 'Ninja', cursive, sans-serif;
+    font-size: 22px;
+    color: cyan;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px cyan;
+}
+
+.loading-subtext {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* Mobile Touch & Scroll Prevention */
+html, body {
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    overflow: hidden;
+}
+
+/* Orientation Overlay for Landscape Enforcement */
+#orientation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 5, 10, 0.96);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.orientation-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.phone-icon {
+    font-size: 65px;
+    animation: rotatePhone 2s ease-in-out infinite;
+}
+
+@keyframes rotatePhone {
+    0%, 10% { transform: rotate(0deg); }
+    40%, 60% { transform: rotate(-90deg); }
+    90%, 100% { transform: rotate(0deg); }
+}
+
+.orientation-title {
+    font-family: 'Ninja', cursive, sans-serif;
+    font-size: 26px;
+    color: #F5D108;
+    margin: 0;
+    text-shadow: 0 0 15px #F5D108;
+    letter-spacing: 1px;
+}
+
+.orientation-desc {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    opacity: 0.9;
+}

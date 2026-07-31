@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Fruit Ninja Web - Hand Tracking</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MediaPipe Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shojumaru&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Hidden video element for camera feed -->
+        <video id="input_video" style="display: none;"></video>
+        <!-- Canvas for rendering -->
+        <canvas id="output_canvas" width="400" height="200"></canvas>
+
+        <!-- Orientation overlay for Mobile Landscape enforcement -->
+        <div id="orientation-overlay">
+            <div class="orientation-content">
+                <div class="phone-icon">📱</div>
+                <h2 class="orientation-title">PLEASE ROTATE DEVICE</h2>
+                <p class="orientation-desc">Rotate to Landscape mode for AR gameplay 🔄</p>
+            </div>
+        </div>
+
+        <div id="loading">
+            <div class="loading-content">
+                <h1 class="loading-title">FRUIT SLICE AR</h1>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <p class="loading-status">INITIALIZING AR SYSTEM...</p>
+                <p class="loading-subtext">Allow camera access in your browser</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/audio.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/objects.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/handTracker.js"></script>
+</body>
+
+</html>
