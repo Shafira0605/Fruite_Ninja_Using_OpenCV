@@ -27,6 +27,39 @@ window.addEventListener('orientationchange', () => {
 });
 resizeCanvas();
 
+// Fullscreen Toggle Handler
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', () => {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+            const docEl = document.documentElement;
+            if (docEl.requestFullscreen) {
+                docEl.requestFullscreen();
+            } else if (docEl.webkitRequestFullscreen) {
+                docEl.webkitRequestFullscreen();
+            } else if (docEl.msRequestFullscreen) {
+                docEl.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+        }
+    });
+
+    function updateFullscreenBtn() {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+            fullscreenBtn.textContent = '✕';
+        } else {
+            fullscreenBtn.textContent = '⛶';
+        }
+    }
+    document.addEventListener('fullscreenchange', updateFullscreenBtn);
+    document.addEventListener('webkitfullscreenchange', updateFullscreenBtn);
+}
+
 // P1 Biru, P2 Merah
 const blade1 = new Blade('rgba(100, 200, 255, 0.6)');
 const blade2 = new Blade('rgba(255, 100, 100, 0.6)');
