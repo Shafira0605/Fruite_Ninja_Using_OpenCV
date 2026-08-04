@@ -4,7 +4,7 @@ class Blade {
         this.maxHistory = 12;
         this.width = 10;
         this.velocity = 0;
-        this.color = color; // Warna jejak pedang
+        this.color = color;
     }
 
     update(x, y) {

@@ -5,7 +5,6 @@ function checkOrientation() {
     const orientationOverlay = document.getElementById('orientation-overlay');
     if (!orientationOverlay) return;
 
-    // Cek jika layar dalam posisi Portrait (Tegak) dan ukuran layar HP/Tablet (lebar/tinggi <= 900px)
     const isPortrait = window.innerHeight > window.innerWidth;
     const isMobile = window.innerWidth <= 950 || window.innerHeight <= 950;
 
@@ -527,11 +526,11 @@ function gameLoop() {
         }
 
         ui.draw(ctx, canvas.width, canvas.height);
-    } 
+    }
     else if (ui.state === "ROUND_TRANSITION") {
         ui.roundTransitionTimer += dt;
         ui.draw(ctx, canvas.width, canvas.height);
-        
+
         if (ui.roundTransitionTimer >= 3) {
             ui.currentRound++;
             ui.timeLeft = 30;
